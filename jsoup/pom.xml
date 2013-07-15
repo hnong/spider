@@ -11,9 +11,9 @@
     </parent>
 
     <groupId>com.hnong</groupId>
-    <artifactId>hnong-jsoup</artifactId>
+    <artifactId>hnong-common-jsoup</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>hnong-jsoup</name>
+    <name>hnong-common-jsoup</name>
 
     <scm>
         <url>http://github.com/asiachrispy/achris/jsoup</url>

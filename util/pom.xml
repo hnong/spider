@@ -11,9 +11,9 @@
     </parent>
 
     <groupId>com.hnong</groupId>
-    <artifactId>hnong-util</artifactId>
+    <artifactId>hnong-common-util</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>hnong-util</name>
+    <name>hnong-common-util</name>
 
     <dependencies>
         <dependency>

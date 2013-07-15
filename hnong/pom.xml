@@ -62,7 +62,7 @@
         </dependency>
         <dependency>
             <groupId>com.hnong</groupId>
-            <artifactId>hnong-jsoup</artifactId>
+            <artifactId>hnong-common-jsoup</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>

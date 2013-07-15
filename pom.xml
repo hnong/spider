@@ -9,6 +9,7 @@
     <url>http://maven.apache.org</url>
 
     <modules>
+        <module>postman</module>
         <module>util</module>
         <module>jsoup</module>
         <module>core</module>
@@ -140,12 +141,6 @@
     </distributionManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>com.diaosi.app</groupId>
-            <artifactId>diaosi-app-core</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
