@@ -1,9 +1,9 @@
 package com.hnong.crawler.wugu;
 
+import com.hnong.common.util.StringUtil;
 import com.hnong.crawler.HomeSite;
 import com.hnong.crawler.constant.TypeEnum;
 import org.jsoup.Jsoup;
-import org.jsoup.helper.StringUtil;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
@@ -49,11 +49,11 @@ public class WuguHomeSite extends HomeSite{
     protected List<String> getUrls() {
         List<String> ret = new ArrayList<String>();
         String html = download(home_url);
-        if (StringUtil.isBlank(html)) {
+        if (StringUtil.isEmpty(html)) {
             return Collections.emptyList();
         }
 
-        if (StringUtil.isBlank(paging_reg)) {
+        if (StringUtil.isEmpty(paging_reg)) {
             ret.add(home_url);
         } else {
             Elements els = Jsoup.parse(html).getElementsByAttributeValue("class","pagelist cls").first().getElementsByTag("a");
@@ -67,7 +67,7 @@ public class WuguHomeSite extends HomeSite{
 
     @Override
     protected Set<String> parserUrl(String html) {
-        if (StringUtil.isBlank(html)) {
+        if (StringUtil.isEmpty(html)) {
             return Collections.emptySet();
         }
 
