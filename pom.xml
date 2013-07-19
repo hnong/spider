@@ -9,9 +9,6 @@
     <url>http://maven.apache.org</url>
 
     <modules>
-        <module>postman</module>
-        <module>util</module>
-        <module>jsoup</module>
         <module>core</module>
         <module>hnong</module>
     </modules>

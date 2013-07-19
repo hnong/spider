@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crawl xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <sites>
+        <!--
+        name-站点名称
+        typ-信息类型【NONE(0), NEWS(1), MARKET(2), TEC(3)】
+        tab-子栏目名称
+        -->
+        <site name="nongye.sina.com.cn"
+              tab="nyscdt"
+              description=""
+              type="NEWS"
+              charset="UTF-8"
+              homeUrl="http://roll.finance.sina.com.cn/finance/ny2/nyscdt/index.shtml"
+              articleUrl="http://finance.sina.com.cn/nongye/nyscdt/*.shtml"
+              pageUrl="http://roll.finance.sina.com.cn/finance/ny2/nyscdt/index_#.shtml">
+
+            <base class="blkContainerSblk" >
+                <title tag="h1"/>
+                <content id="artibody"/>
+                <source id="media_name"/>
+                <author></author>
+                <tags class="content_label_list">
+                    <next tag="a"/>
+                </tags>
+                <publishdate id="pub_date" format="yyyy-MM-dd HH:mm:SS"/>
+            </base>
+        </site>
+        <site name="nongye.sina.com.cn"
+              tab="nygszx"
+              description=""
+              type="MARKET"
+              charset="UTF-8"
+              homeUrl="http://roll.finance.sina.com.cn/finance/ny2/nygszx/index.shtml"
+              articleUrl="http://finance.sina.com.cn/nongye/nygszx/*.shtml"
+              pageUrl="http://roll.finance.sina.com.cn/finance/ny2/nygszx/index_#.shtml">
+
+            <base class="blkContainerSblk" >
+                <title tag="h1"/>
+                <content id="artibody"/>
+                <source id="media_name"/>
+                <author></author>
+                <tags class="content_label_list">
+                    <next tag="a"/>
+                </tags>
+                <publishdate id="pub_date" format="yyyy-MM-dd HH:mm:SS"/>
+            </base>
+        </site>
+
+        <site name="www.wugu.com.cn"
+              description=""
+              charset="UTF-8"
+              homeUrl="http://$.wugu.com.cn/"
+              articleUrl="http://$.wugu.com.cn/article/*"
+              pageUrl="http://$.wugu.com.cn/main/index/#.html">
+
+            <tab name="news" type="NEWS" class="Armartop Arbottomline" >
+                <title tag="h1"/>
+                <content style="text-indent:2em;"/>
+                <source class="Artime"/>
+                <author></author>
+                <tags tag="i"></tags>
+                <publishdate tag="em" format="yyyy-MM-dd HH:mm:SS"/>
+            </tab>
+
+            <tab name="market" type="MARKET" class="Armartop Arbottomline" >
+                <title tag="h1"/>
+                <content style="text-indent:2em;"/>
+                <source class="Artime"/>
+                <author></author>
+                <tags tag="i"></tags>
+                <publishdate tag="em" format="yyyy-MM-dd HH:mm:SS"/>
+            </tab>
+        </site>
+
+        <site name="www.wugu.com.cn"
+              description=""
+              charset="UTF-8"
+              homeUrl="http://$.wugu.com.cn/"
+              articleUrl="http://$.wugu.com.cn/article/*"
+              pageUrl="http://$.wugu.com.cn/main/index/#.html">
+
+            <tab name="news" type="NEWS" class="Armartop Arbottomline" >
+                <title tag="h1"/>
+                <content style="text-indent:2em;"/>
+                <source class="Artime"/>
+                <author></author>
+                <tags tag="i"></tags>
+                <publishdate tag="em" format="yyyy-MM-dd HH:mm:SS"/>
+            </tab>
+
+            <tab name="market" type="MARKET" class="Armartop Arbottomline" >
+                <title tag="h1"/>
+                <content style="text-indent:2em;"/>
+                <source class="Artime"/>
+                <author></author>
+                <tags tag="i"></tags>
+                <publishdate tag="em" format="yyyy-MM-dd HH:mm:SS"/>
+            </tab>
+        </site>
+
+    </sites>
+</crawl>
