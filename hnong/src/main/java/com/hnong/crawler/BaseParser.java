@@ -18,8 +18,6 @@ public abstract class BaseParser {
         model.setSource(parserSource());
         model.setTags(parserTags());
         model.setTitle(parserTitle());
-
-
         return model;
     }
 

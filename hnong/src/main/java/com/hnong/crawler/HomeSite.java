@@ -1,11 +1,11 @@
 package com.hnong.crawler;
 
+import com.hnong.common.util.StringUtil;
 import com.hnong.crawler.constant.HNongConstant;
 import com.hnong.crawler.constant.TypeEnum;
 import com.hnong.crawler.core.exception.SpiderException;
 import com.hnong.crawler.core.spider.CommonSpider;
 import com.hnong.crawler.core.spider.Spider;
-import org.jsoup.helper.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -59,7 +59,7 @@ public abstract class HomeSite {
         Set<String> tmp = null;
         for (String url : urls) {
             html = download(url);
-            if (StringUtil.isBlank(html)) {
+            if (StringUtil.isEmpty(html)) {
                 LOGGER.warn("getTargetUrls {} failed.", url);
                 continue;
             }
