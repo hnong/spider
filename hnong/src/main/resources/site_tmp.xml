@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<crawl xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<crawl xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="">
     <sites>
         <!--
         name-站点名称
         typ-信息类型【NONE(0), NEWS(1), MARKET(2), TEC(3)】
         tab-子栏目名称
-        -->
+
         <site name="nongye.sina.com.cn"
               tab="nyscdt"
               description=""
@@ -72,7 +72,7 @@
                 <publishdate tag="em" format="yyyy-MM-dd HH:mm:SS"/>
             </tab>
         </site>
-
+        -->
         <site name="www.wugu.com.cn"
               description=""
               charset="UTF-8"

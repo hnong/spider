@@ -13,7 +13,7 @@ public class HNongConstant {
 
 
     public static String getCookie() {
-        return "";//todo AppConfigs.getInstance().get(CONFIG_KEY_COOKIE);
+        return "";//AppConfigs.getInstance().get(CONFIG_KEY_COOKIE);
     }
 
     public static String getProxy() {
