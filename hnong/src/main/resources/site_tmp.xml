@@ -81,6 +81,7 @@
               pageUrl="http://$.wugu.com.cn/main/index/#.html">
 
             <tab name="news" type="NEWS" class="Armartop Arbottomline" >
+                <page class="pagelist cls"/>
                 <title tag="h1"/>
                 <content style="text-indent:2em;"/>
                 <source class="Artime"/>
@@ -90,6 +91,7 @@
             </tab>
 
             <tab name="market" type="MARKET" class="Armartop Arbottomline" >
+                <page class="pagelist cls"/>
                 <title tag="h1"/>
                 <content style="text-indent:2em;"/>
                 <source class="Artime"/>

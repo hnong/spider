@@ -16,26 +16,27 @@ import java.util.List;
  * Date: 13-7-19
  */
 public class TmpConfig {
-     private static final Logger LOGGER = LoggerFactory.getLogger(TmpConfig.class);
-     private static List<TabModel> tabModels = new ArrayList<TabModel>();
+    private static final Logger LOGGER = LoggerFactory.getLogger(TmpConfig.class);
+    private static List<TabModel> tabModels = new ArrayList<TabModel>();
 
     private void load() {
         try {
             File tmpFile = new File("/Users/chris/hnong/spider/hnong/src/main/resources/site_tmp.xml");
-            Elements sites = Jsoup.parse(tmpFile,"utf-8").getElementsByTag("site");
+            Elements sites = Jsoup.parse(tmpFile, "utf-8").getElementsByTag("site");
 
             SiteBaseModel siteBaseModel = null;
             TabModel tabModel = null;
 
             String key = null;
             String value = null;
+            String tabName = null;
             List<Attribute> attrs = null;
             Elements tabs = null;
             for (Element site : sites) {
-                attrs =  site.attributes().asList();
+                attrs = site.attributes().asList();
                 siteBaseModel = new SiteBaseModel();
 
-                for (Attribute attr:  attrs) {
+                for (Attribute attr : attrs) {
                     tabModel = new TabModel();
                     key = attr.getKey();
                     value = attr.getValue();
@@ -66,18 +67,23 @@ public class TmpConfig {
                 tabs = site.children();
 
                 for (Element tab : tabs) {
-                    tabModel.setName(tab.attr(TmpConstant.NAME));
+                    tabName = tab.attr(TmpConstant.NAME);
+                    tabModel.setName(tabName);
                     tabModel.setType(tab.attr(TmpConstant.TYPE));
+                    siteBaseModel.setArticleUrl(siteBaseModel.getArticleUrl().replace(TmpConstant.TAB_CHAR, tabName));
+                    siteBaseModel.setPageUrl(siteBaseModel.getPageUrl().replace(TmpConstant.TAB_CHAR, tabName));
+                    siteBaseModel.setHomeUrl(siteBaseModel.getHomeUrl().replace(TmpConstant.TAB_CHAR, tabName));
 
-
+                    tabModel.setNode(tab);
+                    tabModel.setSiteBaseModel(siteBaseModel);
+                    tabModels.add(tabModel);
                 }
-
             }
-            
+
         } catch (Exception e) {
             LOGGER.error("init ConfigLoader error:" + e.getMessage());
             throw new ExceptionInInitializerError("Failed to load config ");
         }
     }
-    
+
 }

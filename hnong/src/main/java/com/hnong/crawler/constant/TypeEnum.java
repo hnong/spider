@@ -29,4 +29,12 @@ public enum TypeEnum {
         return TypeEnum.NONE;
     }
 
+    public static TypeEnum getBusinessByType(String type) {
+        return TypeEnum.valueOf(type);
+    }
+
+    public static void main(String[] args) {
+        getBusinessByType("NONE");
+    }
+
 }

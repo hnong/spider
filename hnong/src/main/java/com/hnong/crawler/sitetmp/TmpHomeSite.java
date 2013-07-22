@@ -1,8 +1,7 @@
-package com.hnong.crawler;
+package com.hnong.crawler.sitetmp;
 
 import com.hnong.common.util.StringUtil;
 import com.hnong.crawler.constant.HNongConstant;
-import com.hnong.crawler.constant.TypeEnum;
 import com.hnong.crawler.core.exception.SpiderException;
 import com.hnong.crawler.core.spider.CommonSpider;
 import com.hnong.crawler.core.spider.Spider;
@@ -20,19 +19,13 @@ import java.util.Set;
  * User: chris
  * Date: 13-7-13
  */
-public abstract class HomeSite {
-    private static final Logger LOGGER = LoggerFactory.getLogger(HomeSite.class);
+public abstract class TmpHomeSite {
+    private static final Logger LOGGER = LoggerFactory.getLogger(TmpHomeSite.class);
     private Spider spider = new CommonSpider(HNongConstant.getProxy()).useProxy(true);
-    private String name;
-    private TypeEnum typeEnum;
 
     private int size = 0;
 
-    public HomeSite(){}
-
-    public HomeSite(String name,TypeEnum type){
-        this.name = name;
-        this.typeEnum = type;
+    public TmpHomeSite() {
     }
 
     public String download(String url) {
@@ -41,7 +34,7 @@ public abstract class HomeSite {
         } catch (IOException e) {
             LOGGER.error("download", e);
         } catch (SpiderException e) {
-            LOGGER.error("download",e);
+            LOGGER.error("download", e);
         }
         return null;
     }
@@ -66,7 +59,7 @@ public abstract class HomeSite {
             }
             tmp = parserUrl(html);
             if (ret != null) {
-                LOGGER.info("{} has {} articles",url,tmp.size());
+                LOGGER.info("{} has {} articles", url, tmp.size());
                 ret.addAll(tmp);
                 size += tmp.size();
             }
@@ -76,24 +69,18 @@ public abstract class HomeSite {
 
     /**
      * 解析home所有分页列表，没有分页则返回首页url
+     *
      * @return
      */
     abstract protected List<String> getUrls();
 
     /**
      * 抓解析分页或者首页的文章url列表
+     *
      * @param html
      * @return
      */
     abstract protected Set<String> parserUrl(String html);
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getSize() {
         return size;
@@ -111,11 +98,4 @@ public abstract class HomeSite {
         this.spider = spider;
     }
 
-    public TypeEnum getTypeEnum() {
-        return typeEnum;
-    }
-
-    public void setTypeEnum(TypeEnum typeEnum) {
-        this.typeEnum = typeEnum;
-    }
 }

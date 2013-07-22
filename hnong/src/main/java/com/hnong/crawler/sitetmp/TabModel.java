@@ -16,14 +16,7 @@ public class TabModel implements Serializable {
     private String type;
 
     // for tab node
-    private Element value;
-
-    private Element title;
-    private Element content;
-    private Element source;
-    private Element author;
-    private Element tags;
-    private Element publishDate;
+    private Element node;
 
     public SiteBaseModel getSiteBaseModel() {
         return siteBaseModel;
@@ -49,59 +42,11 @@ public class TabModel implements Serializable {
         this.type = type;
     }
 
-    public Element getValue() {
-        return value;
+    public Element getNode() {
+        return node;
     }
 
-    public void setValue(Element value) {
-        this.value = value;
-    }
-
-    public Element getTitle() {
-        return title;
-    }
-
-    public void setTitle(Element title) {
-        this.title = title;
-    }
-
-    public Element getContent() {
-        return content;
-    }
-
-    public void setContent(Element content) {
-        this.content = content;
-    }
-
-    public Element getSource() {
-        return source;
-    }
-
-    public void setSource(Element source) {
-        this.source = source;
-    }
-
-    public Element getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Element author) {
-        this.author = author;
-    }
-
-    public Element getTags() {
-        return tags;
-    }
-
-    public void setTags(Element tags) {
-        this.tags = tags;
-    }
-
-    public Element getPublishDate() {
-        return publishDate;
-    }
-
-    public void setPublishDate(Element publishDate) {
-        this.publishDate = publishDate;
+    public void setNode(Element node) {
+        this.node = node;
     }
 }
