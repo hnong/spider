@@ -30,11 +30,12 @@ public enum TypeEnum {
     }
 
     public static TypeEnum getBusinessByType(String type) {
-        return TypeEnum.valueOf(type);
-    }
-
-    public static void main(String[] args) {
-        getBusinessByType("NONE");
+        for (TypeEnum consumer : TypeEnum.values()) {
+            if (consumer.name().equals(type)) {
+                return consumer;
+            }
+        }
+        return TypeEnum.NONE;
     }
 
 }

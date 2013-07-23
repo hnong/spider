@@ -1,4 +1,4 @@
-package com.hnong.crawler.sitetmp;
+package com.hnong.crawler.constant;
 
 /**
  * User: chris
@@ -12,6 +12,7 @@ public class TmpConstant {
     public static final String TAG = "tag";
     public static final String ID = "id";
     public static final String STYLE = "style";
+    public static final String FORMAT = "format";
 
     // for site attr
     public static final String NAME = "name";
@@ -22,6 +23,8 @@ public class TmpConstant {
 
     // for tab
     public static final String PAGE = "page";
+    public static final String MAX = "max";
+    public static final String START = "start";
     public static final String TITLE = "title";
     public static final String CONTENT = "content";
     public static final String SOURCE = "source";

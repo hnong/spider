@@ -1,9 +1,9 @@
-package com.hnong.crawler.sitetmp;
+package com.hnong.crawler.site.template;
 
 import com.hnong.common.util.DateUtil;
 import com.hnong.common.util.StringUtil;
-import com.hnong.crawler.BaseParser;
-import org.jsoup.Jsoup;
+import com.hnong.crawler.constant.TmpConstant;
+import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
@@ -13,28 +13,26 @@ import java.util.Date;
  * User: chris
  * Date: 13-7-14
  */
-public class CommonParser extends BaseParser {
-    private Element node;
+public class CommonSiteParser extends TmpSiteParser {
+
     private TabModel tabModel;
 
-    public CommonParser(TabModel tabModel) {
+    public CommonSiteParser(TabModel tabModel) {
         this.tabModel = tabModel;
     }
 
     @Override
-    public void init(String html) {
-        //this.node = Jsoup.parse(html).getElementsByAttributeValue("class", "Armartop Arbottomline").first();
+    public Element init(Document doc) {
         String key = tabModel.getNode().attr(TmpConstant.CLAZZ);
         if (StringUtil.isNotEmpty(key)) {
-            this.node = Jsoup.parse(html).getElementsByAttributeValue(TmpConstant.CLAZZ, key).first();
-            return;
+            return doc.getElementsByAttributeValue(TmpConstant.CLAZZ, key).first();
         }
 
         key = tabModel.getNode().attr(TmpConstant.ID);
         if (StringUtil.isNotEmpty(key)) {
-            this.node = Jsoup.parse(html).getElementById(key);
-            return;
+            return doc.getElementById(key);
         }
+        return null;
     }
 
     @Override
@@ -63,14 +61,16 @@ public class CommonParser extends BaseParser {
     @Override
     public String parserAuthor() {
         Element e = tabModel.getNode().getElementsByTag(TmpConstant.AUTHOR).first();
-        return parser(e);
+        String v = parser(e);
+        if (v == null) {
+            return "";
+        }
+        return v;
     }
 
     @Override
     public String parserTags() {
-        //Element e = tabModel.getValue().getElementsByTag(TmpConstant.TAGS).first();
-
-        Elements es = node.getElementsByTag("i");
+        Elements es = getNode().getElementsByTag("i");
         StringBuilder sb = new StringBuilder();
         for (Element e : es) {
             sb.append(e.text()).append(",");
@@ -81,26 +81,35 @@ public class CommonParser extends BaseParser {
 
     @Override
     public Date parserPublishDate() {
-        String vDate = node.getElementsByTag("em").text();
-        return DateUtil.parseDate(vDate, "yyyy-MM-dd HH:mm:SS");
+        Element e = tabModel.getNode().getElementsByTag(TmpConstant.PUBLISH_DATE).first();
+        String vDate = parser(e);
+        String format = e.attr(TmpConstant.FORMAT);
+        if (StringUtil.isEmpty(vDate) || StringUtil.isEmpty(format)) {
+            return null;
+        }
+        return DateUtil.parseDate(vDate, format);//"yyyy-MM-dd HH:mm:SS"
     }
 
     private String parser(Element e) {
+        if (e == null) {
+            return null;
+        }
         if (e.hasAttr(TmpConstant.CLAZZ)) {
-            return node.getElementsByAttributeValue(TmpConstant.CLAZZ, e.attr(TmpConstant.CLAZZ)).first().text();
+            return getNode().getElementsByAttributeValue(TmpConstant.CLAZZ, e.attr(TmpConstant.CLAZZ)).first().text();
         }
 
         if (e.hasAttr(TmpConstant.ID)) {
-            return node.getElementById(e.attr(TmpConstant.ID)).text();
+            return getNode().getElementById(e.attr(TmpConstant.ID)).text();
         }
 
         if (e.hasAttr(TmpConstant.TAG)) {
-            return node.getElementsByTag(e.attr(TmpConstant.TAG)).first().text();
+            return getNode().getElementsByTag(e.attr(TmpConstant.TAG)).first().text();
         }
 
         if (e.hasAttr(TmpConstant.STYLE)) {
-            return node.getElementsByAttributeValue(TmpConstant.STYLE, e.attr(TmpConstant.STYLE)).first().text();
+            return getNode().getElementsByAttributeValue(TmpConstant.STYLE, e.attr(TmpConstant.STYLE)).first().text();
         }
+
         return null;
     }
 }

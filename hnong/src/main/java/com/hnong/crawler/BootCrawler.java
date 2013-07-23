@@ -1,10 +1,10 @@
 package com.hnong.crawler;
 
 import com.hnong.crawler.constant.TypeEnum;
-import com.hnong.crawler.sina.SinaHomeSite;
-import com.hnong.crawler.sina.SinaParser;
-import com.hnong.crawler.wugu.WuguHomeSite;
-import com.hnong.crawler.wugu.WuguParser;
+import com.hnong.crawler.site.sina.SinaHomeSite;
+import com.hnong.crawler.site.sina.SinaParser;
+import com.hnong.crawler.site.wugu.WuguHomeSite;
+import com.hnong.crawler.site.wugu.WuguParser;
 
 import java.util.ArrayList;
 import java.util.List;

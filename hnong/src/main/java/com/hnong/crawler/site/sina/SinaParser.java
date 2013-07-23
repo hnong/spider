@@ -1,4 +1,4 @@
-package com.hnong.crawler.sina;
+package com.hnong.crawler.site.sina;
 
 import com.hnong.common.util.DateUtil;
 import com.hnong.crawler.BaseParser;

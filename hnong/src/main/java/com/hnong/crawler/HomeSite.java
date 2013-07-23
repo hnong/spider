@@ -3,7 +3,6 @@ package com.hnong.crawler;
 import com.hnong.common.util.StringUtil;
 import com.hnong.crawler.constant.HNongConstant;
 import com.hnong.crawler.constant.TypeEnum;
-import com.hnong.crawler.core.exception.SpiderException;
 import com.hnong.crawler.core.spider.CommonSpider;
 import com.hnong.crawler.core.spider.Spider;
 import org.slf4j.Logger;
@@ -40,7 +39,7 @@ public abstract class HomeSite {
             return spider.download(url, HNongConstant.CHARSET_UTF8);
         } catch (IOException e) {
             LOGGER.error("download", e);
-        } catch (SpiderException e) {
+        } catch (com.hnong.crawler.exception.SpiderException e) {
             LOGGER.error("download",e);
         }
         return null;

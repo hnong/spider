@@ -1,4 +1,4 @@
-package com.hnong.crawler.sitetmp;
+package com.hnong.crawler.site.template;
 
 import java.io.Serializable;
 

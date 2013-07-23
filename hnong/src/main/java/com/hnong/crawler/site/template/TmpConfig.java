@@ -1,5 +1,6 @@
-package com.hnong.crawler.sitetmp;
+package com.hnong.crawler.site.template;
 
+import com.hnong.crawler.constant.TmpConstant;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Attribute;
 import org.jsoup.nodes.Element;
@@ -19,7 +20,7 @@ public class TmpConfig {
     private static final Logger LOGGER = LoggerFactory.getLogger(TmpConfig.class);
     private static List<TabModel> tabModels = new ArrayList<TabModel>();
 
-    private void load() {
+    public TmpConfig() {
         try {
             File tmpFile = new File("/Users/chris/hnong/spider/hnong/src/main/resources/site_tmp.xml");
             Elements sites = Jsoup.parse(tmpFile, "utf-8").getElementsByTag("site");
@@ -69,6 +70,7 @@ public class TmpConfig {
                 for (Element tab : tabs) {
                     tabName = tab.attr(TmpConstant.NAME);
                     tabModel.setName(tabName);
+
                     tabModel.setType(tab.attr(TmpConstant.TYPE));
                     siteBaseModel.setArticleUrl(siteBaseModel.getArticleUrl().replace(TmpConstant.TAB_CHAR, tabName));
                     siteBaseModel.setPageUrl(siteBaseModel.getPageUrl().replace(TmpConstant.TAB_CHAR, tabName));
@@ -86,4 +88,11 @@ public class TmpConfig {
         }
     }
 
+    public static List<TabModel> getTabModels() {
+        return tabModels;
+    }
+
+    public static void setTabModels(List<TabModel> tabModels) {
+        TmpConfig.tabModels = tabModels;
+    }
 }

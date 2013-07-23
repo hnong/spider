@@ -1,4 +1,4 @@
-package com.hnong.crawler.wugu;
+package com.hnong.crawler.site.wugu;
 
 import com.hnong.common.util.DateUtil;
 import com.hnong.crawler.BaseParser;

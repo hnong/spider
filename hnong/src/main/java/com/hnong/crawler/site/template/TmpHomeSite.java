@@ -1,10 +1,14 @@
-package com.hnong.crawler.sitetmp;
+package com.hnong.crawler.site.template;
 
 import com.hnong.common.util.StringUtil;
 import com.hnong.crawler.constant.HNongConstant;
-import com.hnong.crawler.core.exception.SpiderException;
+import com.hnong.crawler.constant.TmpConstant;
+import com.hnong.crawler.exception.SpiderException;
 import com.hnong.crawler.core.spider.CommonSpider;
 import com.hnong.crawler.core.spider.Spider;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,10 +26,11 @@ import java.util.Set;
 public abstract class TmpHomeSite {
     private static final Logger LOGGER = LoggerFactory.getLogger(TmpHomeSite.class);
     private Spider spider = new CommonSpider(HNongConstant.getProxy()).useProxy(true);
-
+    private TabModel tabModel;
     private int size = 0;
 
-    public TmpHomeSite() {
+    public TmpHomeSite(TabModel tabModel) {
+        this.tabModel = tabModel;
     }
 
     public String download(String url) {
@@ -43,7 +48,10 @@ public abstract class TmpHomeSite {
      * @return null or List
      */
     public Set<String> getTargetUrls() {
-        List<String> urls = getUrls();
+        String homeHtml = download(tabModel.getSiteBaseModel().getHomeUrl());
+        Document doc = Jsoup.parse(homeHtml);
+        Element pageElement = getTabModel().getNode().getElementsByTag(TmpConstant.PAGE).first();
+        List<String> urls = getPageUrls(doc, pageElement);
         if (urls == null) {
             return Collections.emptySet();
         }
@@ -72,7 +80,7 @@ public abstract class TmpHomeSite {
      *
      * @return
      */
-    abstract protected List<String> getUrls();
+    abstract protected List<String> getPageUrls(Document doc, Element pageElement);
 
     /**
      * 抓解析分页或者首页的文章url列表
@@ -98,4 +106,11 @@ public abstract class TmpHomeSite {
         this.spider = spider;
     }
 
+    public TabModel getTabModel() {
+        return tabModel;
+    }
+
+    public void setTabModel(TabModel tabModel) {
+        this.tabModel = tabModel;
+    }
 }
