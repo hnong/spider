@@ -8,9 +8,9 @@ import com.hnong.crawler.site.template.TabModel;
  * User: chris
  * Date: 13-7-13
  */
-public class WuguSite extends CommonHomeSite {
+public class WuguTmpSite extends CommonHomeSite {
 
-    public WuguSite(TabModel tabModel) {
+    public WuguTmpSite(TabModel tabModel) {
         super(tabModel);
     }
 }

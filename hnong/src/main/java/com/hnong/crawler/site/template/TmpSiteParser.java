@@ -1,6 +1,7 @@
 package com.hnong.crawler.site.template;
 
 import com.hnong.crawler.BaseModel;
+import com.hnong.crawler.constant.TmpConstant;
 import com.hnong.crawler.exception.TmpException;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -46,6 +47,30 @@ public abstract class TmpSiteParser {
     abstract public String parserTags();
 
     abstract public Date parserPublishDate();
+
+    private String parserElement(Element e) {
+        if (e == null) {
+            return null;
+        }
+
+        if (e.hasAttr(TmpConstant.CLAZZ)) {
+            return getNode().getElementsByAttributeValue(TmpConstant.CLAZZ, e.attr(TmpConstant.CLAZZ)).first().text();
+        }
+
+        if (e.hasAttr(TmpConstant.ID)) {
+            return getNode().getElementById(e.attr(TmpConstant.ID)).text();
+        }
+
+        if (e.hasAttr(TmpConstant.TAG)) {
+            return getNode().getElementsByTag(e.attr(TmpConstant.TAG)).first().text();
+        }
+
+        if (e.hasAttr(TmpConstant.STYLE)) {
+            return getNode().getElementsByAttributeValue(TmpConstant.STYLE, e.attr(TmpConstant.STYLE)).first().text();
+        }
+
+        return null;
+    }
 
     public Element getNode() {
         return node;

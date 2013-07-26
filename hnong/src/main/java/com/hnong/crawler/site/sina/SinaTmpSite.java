@@ -11,9 +11,9 @@ import javax.lang.model.element.Element;
  * User: chris
  * Date: 13-7-13
  */
-public class SinaSite extends CommonHomeSite {
+public class SinaTmpSite extends CommonHomeSite {
 
-    public SinaSite(TabModel tabModel) {
+    public SinaTmpSite(TabModel tabModel) {
         super(tabModel);
     }
 

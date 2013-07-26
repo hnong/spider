@@ -12,7 +12,7 @@ import java.util.Date;
  * User: chris
  * Date: 13-7-14
  */
-public class SinaParser extends BaseParser {
+public class SinaHomeParser extends BaseParser {
     private Element node;
 
     @Override

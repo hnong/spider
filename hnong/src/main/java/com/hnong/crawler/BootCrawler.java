@@ -2,9 +2,8 @@ package com.hnong.crawler;
 
 import com.hnong.crawler.constant.TypeEnum;
 import com.hnong.crawler.site.sina.SinaHomeSite;
-import com.hnong.crawler.site.sina.SinaParser;
+import com.hnong.crawler.site.wugu.WuguHomeParser;
 import com.hnong.crawler.site.wugu.WuguHomeSite;
-import com.hnong.crawler.site.wugu.WuguParser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,19 +22,19 @@ public class BootCrawler {
         List<TabCrawler> ret = new ArrayList<TabCrawler>();
 
         HomeSite news = new WuguHomeSite(TypeEnum.NEWS, "news");
-        BaseParser newsPar = new WuguParser();
+        BaseParser newsPar = new WuguHomeParser();
         ret.add(new TabCrawler(news, newsPar));
 
         HomeSite market = new WuguHomeSite(TypeEnum.MARKET, "market");
-        BaseParser marketPar = new WuguParser();
+        BaseParser marketPar = new WuguHomeParser();
         ret.add(new TabCrawler(market, marketPar));
 
         HomeSite nyscdt = new SinaHomeSite(TypeEnum.MARKET, "nyscdt");
-        BaseParser nyscdtPar = new SinaParser();
+        BaseParser nyscdtPar = new WuguHomeParser();
         ret.add(new TabCrawler(nyscdt, nyscdtPar));
 
         HomeSite nygszx = new SinaHomeSite(TypeEnum.NEWS, "nygszx");
-        BaseParser nygszxPar = new SinaParser();
+        BaseParser nygszxPar = new WuguHomeParser();
         ret.add(new TabCrawler(nygszx, nygszxPar));
 
         return ret;
@@ -43,7 +42,7 @@ public class BootCrawler {
 
     public void start() {
         List<TabCrawler> tabs = submit();
-        for (TabCrawler tab: tabs) {
+        for (TabCrawler tab : tabs) {
             executorService.submit(tab);
         }
     }
