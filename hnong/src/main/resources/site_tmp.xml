@@ -40,9 +40,7 @@
                 <content id="artibody"/>
                 <source id="media_name"/>
                 <author></author>
-                <tags class="content_label_list">
-                    <next tag="a"/>
-                </tags>
+                <tags class="content_label_list" tag="a"/>
                 <publishdate id="pub_date" format="yyyy-MM-dd HH:mm:SS"/>
             </base>
         </site>
@@ -86,7 +84,7 @@
                 <content style="text-indent:2em;"/>
                 <source class="Artime"/>
                 <author></author>
-                <tags tag="i"></tags>
+                <tags class="showtag cls" tag="i"></tags>
                 <publishdate tag="em" format="yyyy-MM-dd HH:mm:SS"/>
             </tab>
 
@@ -96,9 +94,37 @@
                 <content style="text-indent:2em;"/>
                 <source class="Artime"/>
                 <author></author>
-                <tags tag="i"></tags>
+                <tags class= "showtag cls" tag="i"></tags>
                 <publishdate tag="em" format="yyyy-MM-dd HH:mm:SS"/>
             </tab>
+        </site>
+
+        <site name="nongye.sina.com.cn"
+              description=""
+              charset="UTF-8"
+              homeUrl="http://roll.finance.sina.com.cn/finance/ny2/$/index.shtml"
+              articleUrl="http://finance.sina.com.cn/nongye/$/*.shtml"
+              pageUrl="http://roll.finance.sina.com.cn/finance/ny2/$/index_#.shtml">
+
+            <base name="nygszx" type="MARKET" class="blkContainerSblk" description="农企资讯" >
+                <page class="pagebox" start="1" max="5"/>
+                <title tag="h1"/>
+                <content id="artibody"/>
+                <source id="media_name"/>
+                <author></author>
+                <tags class="content_label_list" tag="a"/>
+                <publishdate id="pub_date" format="yyyy-MM-dd HH:mm:SS"/>
+            </base>
+
+            <base name="nyscdt" type="MARKET" class="blkContainerSblk" description="市场动态" >
+                <page class="pagebox" start="1" max="5"/>
+                <title tag="h1"/>
+                <content id="artibody"/>
+                <source id="media_name"/>
+                <author></author>
+                <tags class="content_label_list" tag="a"/>
+                <publishdate id="pub_date" format="yyyy-MM-dd HH:mm:SS"/>
+            </base>
         </site>
 
     </sites>

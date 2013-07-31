@@ -1,8 +1,10 @@
-package com.hnong.crawler.site.template;
+package com.hnong.crawler.site.sina;
 
 import com.hnong.common.util.DateUtil;
 import com.hnong.common.util.StringUtil;
 import com.hnong.crawler.constant.TmpConstant;
+import com.hnong.crawler.site.template.TabModel;
+import com.hnong.crawler.site.template.TmpSiteParser;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -10,30 +12,26 @@ import org.jsoup.select.Elements;
 import java.util.Date;
 
 /**
- * User: chris
- * Date: 13-7-14
+ * User: zhong.huang
+ * Date: 13-7-24
  */
-public class CommonSiteParser extends TmpSiteParser {
+public class SinaTmpParser extends TmpSiteParser {
 
     private TabModel tabModel;
 
-    public CommonSiteParser(TabModel tabModel) {
+    public SinaTmpParser(TabModel tabModel) {
         this.tabModel = tabModel;
     }
 
     @Override
     public Element init(Document doc) {
-        String key = tabModel.getNode().attr(TmpConstant.CLAZZ);
-        if (StringUtil.isNotEmpty(key)) {
-            return doc.getElementsByAttributeValue(TmpConstant.CLAZZ, key).first();
-        }
-
-        key = tabModel.getNode().attr(TmpConstant.ID);
+        String key = tabModel.getNode().attr(TmpConstant.ID);
         if (StringUtil.isNotEmpty(key)) {
             return doc.getElementById(key);
         }
         return null;
     }
+
 
     @Override
     public String parserTitle() {
@@ -50,12 +48,7 @@ public class CommonSiteParser extends TmpSiteParser {
     @Override
     public String parserSource() {
         Element e = tabModel.getNode().getElementsByTag(TmpConstant.SOURCE).first();
-        String value = parserElement(e);
-        //todo 不同site需要做不同的处理
-//        if (value != null) {
-//            value = value.substring(2);
-//        }
-        return value;
+        return parserElement(e);
     }
 
     @Override
@@ -94,5 +87,4 @@ public class CommonSiteParser extends TmpSiteParser {
         }
         return DateUtil.parseDate(vDate, format);//"yyyy-MM-dd HH:mm:SS"
     }
-
 }

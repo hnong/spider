@@ -5,6 +5,7 @@ import com.hnong.crawler.constant.TmpConstant;
 import com.hnong.crawler.exception.TmpException;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.util.Date;
 
@@ -48,7 +49,27 @@ public abstract class TmpSiteParser {
 
     abstract public Date parserPublishDate();
 
-    private String parserElement(Element e) {
+    /**
+     * 解析标签下的子标签
+     * @param e
+     * @return
+     */
+    public Elements parserTagNodes(Element e) {
+        if (e == null) {
+            return null;
+        }
+
+        if (e.hasAttr(TmpConstant.CLAZZ) && e.hasAttr(TmpConstant.TAG)) {
+            Element tagNode = getNode().getElementsByAttributeValue(TmpConstant.CLAZZ, e.attr(TmpConstant.CLAZZ)).first();
+            return tagNode.getElementsByTag(e.attr(TmpConstant.TAG));
+        } else if (e.hasAttr(TmpConstant.TAG)) {
+            return getNode().getElementsByTag(e.attr(TmpConstant.CLAZZ));
+        } else {
+            return null;
+        }
+    }
+
+    public String parserElement(Element e) {
         if (e == null) {
             return null;
         }
@@ -59,10 +80,6 @@ public abstract class TmpSiteParser {
 
         if (e.hasAttr(TmpConstant.ID)) {
             return getNode().getElementById(e.attr(TmpConstant.ID)).text();
-        }
-
-        if (e.hasAttr(TmpConstant.TAG)) {
-            return getNode().getElementsByTag(e.attr(TmpConstant.TAG)).first().text();
         }
 
         if (e.hasAttr(TmpConstant.STYLE)) {
